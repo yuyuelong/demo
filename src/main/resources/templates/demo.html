@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{../static/bootstrap.css}" type="text/css">
+    <style type="text/css">
+        input{
+            border:1px solid beige;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            height: 30px;
+            padding-left: 7px;
+            width: 200px;
+        }
+        div{
+            text-align: center;
+            margin: 10px 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 th:text="${say}">Hello</h1>
+    <div class="col-md-12 col-lg-12 col-sm-12">
+        <label>用户名</label>
+        <input class="form-control" th:id="${user.username}" th:name="${user.username}" th:value="${user.username}">
+    </div>
+    <div>
+        <label>年龄</label>
+        <input class="form-control" th:id="${user.age}" th:name="${user.age}" th:value="${user.age}">
+    </div>
+
+
+
+    <table>
+        <thead>
+            <tr>
+                <td>用户名</td>
+                <td>年龄</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user:${userList}">
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.age}"></td>
+            </tr>
+        </tbody>
+
+        <a href="http://www.imooc.com" th:href="@{${email}(name=${user.username},age=${user.age})}"
+            th:text="${v eq 1 ? 'baidu' : 'imooc'}"
+        >跳转</a>
+
+        <br>
+        用户:<input th:value="${userd}" style="width:100%;margin-left: 5px;margin-right: 5px;"/>
+
+        <label th:text = "${#calendars.format(userDate, 'yyyy-MM-dd HH:mm:ss')}"></label>
+
+        <label th:text="${session.name}"></label>
+
+        <div th:include="demo2.html"></div>
+
+    </table>
+
+    <script type="text/javascript" th:src="@{/static/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/bootstrap-table.js}"></script>
+    <script type="text/javascript" th:inline="javascript">
+            var name = [[${session.name}]];
+            console.log(name);
+    </script>
+</body>
+</html>

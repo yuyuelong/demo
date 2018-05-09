@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    active: dev
+  datasource: #数据源
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc://mysql:192.168.1.169:3306/demo
+    username: root
+    password: root
+  devtools: #热部署生效
+    livereload:
+      enabled: true
+    restart: #设置重启的目录，添加那个目录的文件需要restart
+      additional-paths: src/main/java
+  thymeleaf: #Thymeleaf模板引擎
+    prefix: classpath:/templates/ #模板前缀
+    suffix: .html #模板后缀
+    mode: HTML5
+    encoding: UTF-8 #字符编码
+    servlet:
+      content-type: text/html
+    cache: false
+    #开发时关闭缓存,不然没法看到实时页面
+  mvc:
+    static-path-pattern: /static/**
+
+#  messages:
+#    basename: i18n/messages
+#    cache-duration: 3600
+#    encoding: utf-8
+
+
+
+qiniu:
+  accessKey: owOzPCf2q59GCl8ERU0JIvyiC6AcSRFGxfZ0Y4kW
+  secretKey: XPF5hjwBb65iPoxEkcS9xSfJyyn-V47rbh0kiExM
+  bucket: edupic
+  localFilePath: F:/abc.jpeg
