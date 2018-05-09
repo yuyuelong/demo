@@ -34,6 +34,12 @@ public class AdminController extends BaseController<Integer,Admin>{
         return "login";
     }
 
+    @GetMapping(value = "upload")
+    @ResponseBody
+    public String upload(){
+       return fileUtil.uploadFile() ? "success" : "fail";
+    }
+
 
     @PostMapping("login")
     @ResponseBody
@@ -55,14 +61,5 @@ public class AdminController extends BaseController<Integer,Admin>{
         return map.toString();
     }
 
-    @PostMapping("upload")
-    public String upload(@RequestParam(value = "file") MultipartFile file){
-        System.out.println(file);
-       /* File files = new File(file.);
-        String s  = files.getAbsolutePath();*/
-        System.out.println();
-//        fileUtil.uploadFile();
-        return Boolean.TRUE.toString();
-    }
 
 }

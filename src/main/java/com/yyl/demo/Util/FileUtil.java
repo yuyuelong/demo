@@ -33,7 +33,7 @@ public class FileUtil {
     private String localFilePath;
 
 
-    public String uploadFile(){
+    public boolean uploadFile(){
         //构造一个带指定Zone对象的配置类
         Configuration cfg = new Configuration(Zone.zone2());
         //...其他参数参考类注释
@@ -48,8 +48,9 @@ public class FileUtil {
         //String key = "admin";
         Auth auth = Auth.create(accessKey, secretKey);
         String upToken = auth.uploadToken(bucket);
+        Response response = null;
         try {
-            Response response = uploadManager.put(localFilePath, null, upToken);
+            response = uploadManager.put(localFilePath, null, upToken);
             //解析上传成功的结果
             DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
             System.out.println(putRet.key);
@@ -71,6 +72,6 @@ public class FileUtil {
             }
         }
 
-        return null;
+        return response.isOK();
     }
 }
