@@ -5,6 +5,11 @@
     <title>Title</title>
     <link rel="stylesheet" th:href="@{../static/bootstrap.css}" type="text/css">
     <style type="text/css">
+
+        *{
+            margin: 0px;
+        }
+
         input{
             border:1px solid beige;
             -webkit-border-radius: 4px;
@@ -18,17 +23,31 @@
             text-align: center;
             margin: 10px 5px;
         }
+
+        .inputF{
+            width: 70%;
+        }
+
+        .inputF>.inputC{
+            width: 70%;
+            float: right;
+            margin: 0px;
+        }
     </style>
 </head>
 <body>
     <h1 th:text="${say}">Hello</h1>
-    <div class="col-md-12 col-lg-12 col-sm-12">
+    <div class="inputF">
         <label>用户名</label>
-        <input class="form-control" th:id="${user.username}" th:name="${user.username}" th:value="${user.username}">
+        <div class="inputC">
+            <input class="form-control" th:id="${user.username}" th:name="${user.username}" th:value="${user.username}">
+        </div>
     </div>
-    <div>
+    <div class="inputF">
         <label>年龄</label>
-        <input class="form-control" th:id="${user.age}" th:name="${user.age}" th:value="${user.age}">
+        <div class="inputC">
+            <input class="form-control" th:id="${user.age}" th:name="${user.age}" th:value="${user.age}">
+        </div>
     </div>
 
 
